@@ -293,11 +293,10 @@
   // Remplacez l'URL ENDPOINT_URL par votre webhook (Brevo / Make / Zapier / endpoint perso).
   // Le payload contient tous les champs + UTM + URL + timestamp.
   // Renvoie une Promise — résolue = succès, rejetée = erreur (alerte affichée).
-  // Email de réception — remplace par ton adresse si besoin
+  // Email de réception
   const NOTIFICATION_EMAIL = 'contact@batiproconnect.com';
 
   async function submitForm(payload) {
-    // Aplatit les tableaux (atouts[]) et l'objet utm pour un email lisible
     const flat = { ...payload };
     if (Array.isArray(flat.atouts)) flat.atouts = flat.atouts.join(', ');
     if (flat.utm && typeof flat.utm === 'object') {
@@ -317,8 +316,12 @@
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(body),
     });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return res.json().catch(() => ({}));
+    const json = await res.json().catch(() => ({}));
+    console.log('[FormSubmit] response:', res.status, json);
+    if (!res.ok || json.success === 'false' || json.success === false) {
+      throw new Error(json.message || ('HTTP ' + res.status));
+    }
+    return json;
   }
   // ---------- ⬆⬆⬆ /submitForm ⬆⬆⬆ ----------
 
