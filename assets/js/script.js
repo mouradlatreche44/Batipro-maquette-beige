@@ -293,22 +293,32 @@
   // Remplacez l'URL ENDPOINT_URL par votre webhook (Brevo / Make / Zapier / endpoint perso).
   // Le payload contient tous les champs + UTM + URL + timestamp.
   // Renvoie une Promise — résolue = succès, rejetée = erreur (alerte affichée).
+  // Email de réception — remplace par ton adresse si besoin
+  const NOTIFICATION_EMAIL = 'contact@batiproconnect.com';
+
   async function submitForm(payload) {
-    // Pour la prod, décommentez et remplacez l'URL :
-    /*
-    const ENDPOINT_URL = "https://hooks.brevo.com/integrations/...";  // ← À REMPLACER
-    const res = await fetch(ENDPOINT_URL, {
+    // Aplatit les tableaux (atouts[]) et l'objet utm pour un email lisible
+    const flat = { ...payload };
+    if (Array.isArray(flat.atouts)) flat.atouts = flat.atouts.join(', ');
+    if (flat.utm && typeof flat.utm === 'object') {
+      Object.entries(flat.utm).forEach(([k, v]) => { flat['utm_' + k] = v; });
+      delete flat.utm;
+    }
+
+    const body = {
+      ...flat,
+      _subject: `Nouvelle demande de maquette — ${flat.company || flat.email || 'Sans nom'}`,
+      _template: 'table',
+      _captcha: 'false',
+    };
+
+    const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFICATION_EMAIL), {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body),
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     return res.json().catch(() => ({}));
-    */
-
-    // Mode démo (à retirer en prod) : log + délai simulé
-    console.log('[Batiproconnect] Form payload:', payload);
-    return new Promise((resolve) => setTimeout(resolve, 600));
   }
   // ---------- ⬆⬆⬆ /submitForm ⬆⬆⬆ ----------
 
