@@ -91,6 +91,7 @@
   if (!form) return;
 
   const track       = qs('#slidesTrack');
+  const viewport    = qs('#slidesViewport');
   const slides      = qsa('.form-slide', form);
   const totalSlides = slides.length;
   const stepCurEl   = qs('#stepCurrent');
@@ -110,9 +111,15 @@
     if (fillEl)    fillEl.style.width    = pct + '%';
   }
 
+  function adjustHeight() {
+    if (!viewport || !slides[current]) return;
+    viewport.style.height = slides[current].offsetHeight + 'px';
+  }
+
   function goTo(idx) {
     current = Math.max(0, Math.min(totalSlides - 1, idx));
     if (track) track.style.transform = 'translateX(-' + (current * 25) + '%)';
+    adjustHeight();
     updateProgress();
     // Focus le 1er champ de la slide pour accessibilité clavier
     const slide = slides[current];
@@ -307,4 +314,7 @@
 
   // Init
   updateProgress();
+  adjustHeight();
+  window.addEventListener('load', adjustHeight);
+  window.addEventListener('resize', adjustHeight);
 })();

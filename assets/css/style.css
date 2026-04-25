@@ -1552,9 +1552,10 @@ em, .italic-serif {
   transition: width 500ms cubic-bezier(.22,.61,.36,1);
 }
 
-.slides-viewport { position: relative; overflow: hidden; }
+.slides-viewport { position: relative; overflow: hidden; transition: height 380ms cubic-bezier(.4,0,.2,1); }
 .slides-track {
   display: flex; flex-wrap: nowrap;
+  align-items: flex-start;
   width: 400%;
   transform: translateX(0);
   transition: transform 480ms cubic-bezier(.4,0,.2,1);

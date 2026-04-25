@@ -761,7 +761,7 @@
           </div>
 
           <form id="batiproForm" class="multi-form" novalidate>
-            <div class="slides-viewport">
+            <div class="slides-viewport" id="slidesViewport">
               <div class="slides-track" id="slidesTrack">
                 <fieldset class="form-slide" data-slide="1" aria-labelledby="slide1-title">
                   <legend class="form-slide-title" id="slide1-title">Parlez-nous de votre entreprise</legend>
@@ -823,7 +823,7 @@
 
           <article class="trade-card reveal" data-reveal>
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/><path d="M9 12h6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 16h18"/><path d="M9 4v6M15 10v6M9 16v4M15 4v6"/></svg>
             </div>
             <h3>Gros œuvre &amp; second œuvre</h3>
             <p>Maçon, charpentier, couvreur, zingueur, plaquiste, carreleur, peintre en bâtiment, façadier, ravaleur, menuisier (bois, alu, PVC), parqueteur, solier-moquettiste, plombier, chauffagiste, électricien.</p>
@@ -831,7 +831,7 @@
 
           <article class="trade-card reveal" data-reveal data-delay="60">
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/><circle cx="6" cy="6" r=".5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/><path d="M2 21h20"/></svg>
             </div>
             <h3>Fermetures &amp; extérieurs</h3>
             <p>Poseur de fenêtres, store et volet roulant, portail et automatisme, serrurier, métallier, vitrier, terrassier, paysagiste, jardinier, élagueur, clôture, terrasse bois &amp; composite, véranda, pergola bioclimatique.</p>
@@ -839,7 +839,7 @@
 
           <article class="trade-card reveal" data-reveal data-delay="120">
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3"/><path d="M2 14h20v4a1 1 0 0 1-1 1h-1v-2H4v2H3a1 1 0 0 1-1-1z"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
             </div>
             <h3>Aménagement intérieur</h3>
             <p>Cuisiniste, poseur de cuisine, salle de bain clé en main, aménagement de combles, aménagement de sous-sol, rénovation complète d'appartement.</p>
@@ -847,7 +847,7 @@
 
           <article class="trade-card reveal" data-reveal data-delay="180">
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M9 21H4a1 1 0 0 1-1-1v-5"/><path d="M3 14 14 3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5a2.12 2.12 0 1 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47z"/></svg>
             </div>
             <h3>Rénovation lourde</h3>
             <p>Extension de maison, surélévation, démolition, désamiantage, traitement humidité, démoussage de toiture, étanchéité, bardage, ramonage et fumisterie, piscine et spa.</p>
@@ -855,7 +855,7 @@
 
           <article class="trade-card reveal" data-reveal data-delay="240">
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><path d="M7 10v3a4 4 0 0 0 4 4"/><path d="M17 10v3a4 4 0 0 1-4 4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
             </div>
             <h3>Multi-services &amp; entreprises générales</h3>
             <p>Artisan multiservice, entreprise générale du bâtiment, constructeur de maisons individuelles. Toutes vos prestations sur un même site, structuré pour rassurer particuliers et professionnels.</p>
@@ -863,7 +863,7 @@
 
           <article class="trade-card trade-card--energy reveal" data-reveal data-delay="300">
             <div class="trade-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.09 12.97a.5.5 0 0 0 .39.83H11l-1 8 8.91-10.97a.5.5 0 0 0-.39-.83H13l0-7Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.5 2c.5 6 .25 10.5-2.5 13.5C14 19 11 20 11 20Z"/><path d="M2 22 8 16"/></svg>
             </div>
             <h3>Spécialiste rénovation énergétique</h3>
             <p>Photovoltaïque, pompes à chaleur, poêles à granulés, ITE, isolation combles, VMC double flux, bornes IRVE, domotique. Vos labels <strong>RGE Qualibat, Qualibois, QualiPV, Qualipac</strong> mis en valeur.</p>
