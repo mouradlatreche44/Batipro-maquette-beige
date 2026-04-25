@@ -293,8 +293,8 @@
   // Remplacez l'URL ENDPOINT_URL par votre webhook (Brevo / Make / Zapier / endpoint perso).
   // Le payload contient tous les champs + UTM + URL + timestamp.
   // Renvoie une Promise — résolue = succès, rejetée = erreur (alerte affichée).
-  // Email de réception
-  const NOTIFICATION_EMAIL = 'contact@batiproconnect.com';
+  // Web3Forms — clé liée à contact@batiproconnect.com
+  const WEB3FORMS_ACCESS_KEY = 'bc4ee9d2-50c0-4d9e-8290-4a48c725bef9';
 
   async function submitForm(payload) {
     const flat = { ...payload };
@@ -305,20 +305,20 @@
     }
 
     const body = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Nouvelle demande de maquette — ${flat.company || flat.email || 'Sans nom'}`,
+      from_name: 'Landing Batiproconnect',
       ...flat,
-      _subject: `Nouvelle demande de maquette — ${flat.company || flat.email || 'Sans nom'}`,
-      _template: 'table',
-      _captcha: 'false',
     };
 
-    const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFICATION_EMAIL), {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(body),
     });
     const json = await res.json().catch(() => ({}));
-    console.log('[FormSubmit] response:', res.status, json);
-    if (!res.ok || json.success === 'false' || json.success === false) {
+    console.log('[Web3Forms] response:', res.status, json);
+    if (!res.ok || json.success === false) {
       throw new Error(json.message || ('HTTP ' + res.status));
     }
     return json;

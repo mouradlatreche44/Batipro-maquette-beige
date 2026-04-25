@@ -169,7 +169,7 @@ em, .italic-serif {
   box-shadow: 0 1px 0 rgba(11,29,58,.04), 0 6px 18px rgba(11,29,58,.06);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.nav-logo img { height: 38px; width: auto; }
+.nav-logo img { height: 64px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a:not(.btn) { color: var(--c-ink); font-weight: 600; font-size: 15px; }
 .nav-links a:not(.btn):hover { color: var(--c-ocre); }
@@ -1086,7 +1086,7 @@ em, .italic-serif {
 
 @media (max-width: 1000px) {
   .compare-grid { grid-template-columns: 1fr; gap: 28px; }
-  .compare-card-featured { transform: none; order: -1; }
+  .compare-card-featured { transform: none; }
   .compare-card-featured:hover { transform: translateY(-4px); }
 }
 
