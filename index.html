@@ -19,11 +19,38 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://batiproconnect.com/#organization",
+    "name": "Batiproconnect",
+    "url": "https://batiproconnect.com",
+    "description": "Création de site internet pour artisans et pros du bâtiment. 490 € HT payable à la livraison, sans acompte, sans engagement.",
+    "telephone": "+33756836351",
+    "email": "contact@batiproconnect.com",
+    "priceRange": "490 € HT",
+    "areaServed": { "@type": "Country", "name": "France" },
+    "address": { "@type": "PostalAddress", "addressCountry": "FR" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "19:00" }
+    ],
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Création de site internet pour pros du bâtiment",
-    "provider": { "@type": "Organization", "name": "Batiproconnect", "url": "https://batiproconnect.com" },
+    "provider": { "@id": "https://batiproconnect.com/#organization" },
     "areaServed": "FR",
-    "offers": { "@type": "Offer", "price": "490", "priceCurrency": "EUR", "description": "Site internet sur-mesure, payable à la livraison." }
+    "audience": { "@type": "BusinessAudience", "audienceType": "Artisans du bâtiment, plombiers, électriciens, couvreurs, maçons, menuisiers, paysagistes, multiservices" },
+    "offers": {
+      "@type": "Offer",
+      "price": "490",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "description": "Site internet sur-mesure, hébergement 1ère année inclus, 3 mois de modifications gratuites. Payable uniquement à la livraison.",
+      "url": "https://batiproconnect.com/formulaire-maquette/"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -31,9 +58,12 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "Vraiment aucun acompte ?", "acceptedAnswer": {"@type": "Answer", "text": "On a fait ce choix volontaire pour casser la méfiance des artisans. On prend le risque. Si la maquette ne vous plaît pas, on perd notre temps, c'est tout."}},
-      {"@type": "Question", "name": "Combien de temps entre ma demande et la maquette ?", "acceptedAnswer": {"@type": "Answer", "text": "On vise une maquette livrée dans les 7 jours. Selon la charge en cours, ça peut être un peu plus."}},
-      {"@type": "Question", "name": "Qui possède le site une fois livré ?", "acceptedAnswer": {"@type": "Answer", "text": "Vous. Le site, le contenu, le nom de domaine : tout est à vous."}}
+      {"@type": "Question", "name": "Vraiment aucun acompte ? C'est trop beau pour être vrai.", "acceptedAnswer": {"@type": "Answer", "text": "On a fait ce choix volontaire pour casser la méfiance des artisans qui se sont déjà fait avoir. On prend le risque à notre charge. Si la maquette ne vous plaît pas, on perd notre temps, c'est tout. À nous de faire en sorte qu'elle vous plaise."}},
+      {"@type": "Question", "name": "Combien de temps entre ma demande et la maquette ?", "acceptedAnswer": {"@type": "Answer", "text": "On vise une maquette livrée dans les 7 jours. Selon la charge en cours, ça peut être un peu plus, on vous le dit dès le premier contact."}},
+      {"@type": "Question", "name": "Combien de modifications j'ai droit ?", "acceptedAnswer": {"@type": "Answer", "text": "Pendant la phase maquette : autant que nécessaire jusqu'à ce qu'elle vous plaise à 100 %. Après la mise en ligne : 3 mois de modifications gratuites incluses, puis 100 € HT par lot de modifications au-delà."}},
+      {"@type": "Question", "name": "Qui possède le site une fois livré ?", "acceptedAnswer": {"@type": "Answer", "text": "Vous. Le site, le contenu, le nom de domaine : tout est à vous. Aucun verrou, aucun otage. Si demain vous voulez changer de prestataire, vous pouvez prendre vos données et partir."}},
+      {"@type": "Question", "name": "Et après la 1re année ? Je dois payer un abonnement ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun abonnement obligatoire. On propose une option de maintenance à 30 €/mois si vous voulez qu'on s'occupe de l'hébergement, des modifications illimitées et du support — totalement optionnel. Vous pouvez aussi continuer seul, le site vous appartient."}},
+      {"@type": "Question", "name": "Vous êtes qui exactement ?", "acceptedAnswer": {"@type": "Answer", "text": "Une équipe qui réunit deux mondes : un expert terrain (14 ans dans la distribution spécialisée matériel électrique et multiénergie, à parler tous les jours aux pros du bâtiment) et un webdesigner spécialisé (5 ans d'expérience dans la création de sites internet). C'est cette double expertise qui nous permet de concevoir des sites réellement pertinents pour vos clients."}}
     ]
   }
   </script>
@@ -112,7 +142,7 @@
                   <span class="hv-dot hv-dot-g"></span>
                 </div>
                 <div class="hv-site-screenshot">
-                  <img src="assets/img/mockups/martin-laptop.png" alt="Aperçu site Martin Plomberie" loading="eager" />
+                  <img src="assets/img/mockups/martin-laptop.webp" alt="Aperçu site artisan plombier" loading="eager" />
                 </div>
               </div>
             </div>
@@ -125,7 +155,7 @@
               <div class="hv-phone-screen">
                 <div class="hv-phone-notch"></div>
                 <div class="hv-phone-screenshot">
-                  <img src="assets/img/mockups/ecovap-mobile.png" alt="Aperçu site Ecovap Toiture mobile" loading="eager" />
+                  <img src="assets/img/mockups/ecovap-mobile.webp" alt="Aperçu site nettoyage toiture mobile" loading="eager" />
                 </div>
               </div>
             </div>
@@ -135,11 +165,11 @@
           <div class="hv-seal" aria-hidden="true">
             <svg class="hv-seal-rotate" viewBox="0 0 200 200">
               <defs>
-                <path id="hvSealPath" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+                <path id="hvSealPath" d="M 100,100 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
               </defs>
               <text class="hv-seal-text">
                 <textPath href="#hvSealPath" startOffset="0">
-                  · PAYABLE À LIVRAISON · 490€ HT · SANS ACOMPTE · MAQUETTE GRATUITE 
+                  · PAYABLE À LIVRAISON · 490€ HT · SANS ACOMPTE · MAQUETTE GRATUITE
                 </textPath>
               </text>
             </svg>
@@ -149,14 +179,6 @@
             </div>
           </div>
 
-          <!-- Badge "en direct" -->
-          <div class="hv-badge" aria-hidden="true">
-            <span class="hv-badge-dot"></span>
-            <div>
-              <strong>Maquette en cours</strong>
-              <span>Pierre · Plombier · Lyon</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -224,7 +246,7 @@
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/martin-laptop.png" alt="Site Martin Plomberie" loading="lazy" />
+                  <img src="assets/img/mockups/martin-laptop.webp" alt="Site plombier" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
@@ -232,10 +254,10 @@
             <div class="reel-phone">
               <div class="rp-bezel">
                 <div class="rp-notch"></div>
-                <img src="assets/img/mockups/martin-mobile.png" alt="" loading="lazy" />
+                <img src="assets/img/mockups/martin-mobile.webp" alt="" loading="lazy" />
               </div>
             </div>
-            <figcaption class="reel-cap"><strong>Martin Plomberie</strong><span>Plombier · Marseille</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site plombier</strong><span>Marseille</span></figcaption>
           </article>
 
           <article class="reel-item">
@@ -243,7 +265,7 @@
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/depannage-laptop.png" alt="Site Dépannage 60" loading="lazy" />
+                  <img src="assets/img/mockups/depannage-laptop.webp" alt="Site dépannage plombier-électricien" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
@@ -251,10 +273,10 @@
             <div class="reel-phone">
               <div class="rp-bezel">
                 <div class="rp-notch"></div>
-                <img src="assets/img/mockups/depannage-mobile.png" alt="" loading="lazy" />
+                <img src="assets/img/mockups/depannage-mobile.webp" alt="" loading="lazy" />
               </div>
             </div>
-            <figcaption class="reel-cap"><strong>Dépannage 60</strong><span>Plombier · Électricien · Oise</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site dépannage</strong><span>Plombier · Électricien</span></figcaption>
           </article>
 
           <article class="reel-item">
@@ -262,7 +284,7 @@
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/bso-laptop.png" alt="Site BSO Bâtiment" loading="lazy" />
+                  <img src="assets/img/mockups/bso-laptop.webp" alt="Site maçonnerie" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
@@ -270,10 +292,10 @@
             <div class="reel-phone">
               <div class="rp-bezel">
                 <div class="rp-notch"></div>
-                <img src="assets/img/mockups/bso-mobile.png" alt="" loading="lazy" />
+                <img src="assets/img/mockups/bso-mobile.webp" alt="" loading="lazy" />
               </div>
             </div>
-            <figcaption class="reel-cap"><strong>BSO Bâtiment</strong><span>Maçonnerie · ITE · Vaucluse</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site maçonnerie</strong><span>Maçonnerie · ITE · Rénovation</span></figcaption>
           </article>
 
           <article class="reel-item">
@@ -281,7 +303,7 @@
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/ecovap-laptop.png" alt="Site Ecovap Toiture" loading="lazy" />
+                  <img src="assets/img/mockups/ecovap-laptop.webp" alt="Site nettoyage de toiture" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
@@ -289,10 +311,10 @@
             <div class="reel-phone">
               <div class="rp-bezel">
                 <div class="rp-notch"></div>
-                <img src="assets/img/mockups/ecovap-mobile.png" alt="" loading="lazy" />
+                <img src="assets/img/mockups/ecovap-mobile.webp" alt="" loading="lazy" />
               </div>
             </div>
-            <figcaption class="reel-cap"><strong>Ecovap Toiture</strong><span>Démoussage · Pyrénées-Atlantiques</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site nettoyage de toiture</strong><span>Démoussage · Hydrofuge</span></figcaption>
           </article>
 
           <!-- Set B (clone pour boucle infinie) -->
@@ -301,60 +323,60 @@
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/martin-laptop.png" alt="" loading="lazy" />
+                  <img src="assets/img/mockups/martin-laptop.webp" alt="" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
             </div>
             <div class="reel-phone">
-              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/martin-mobile.png" alt="" loading="lazy" /></div>
+              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/martin-mobile.webp" alt="" loading="lazy" /></div>
             </div>
-            <figcaption class="reel-cap"><strong>Martin Plomberie</strong><span>Plombier · Marseille</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site plombier</strong><span>Marseille</span></figcaption>
           </article>
           <article class="reel-item" aria-hidden="true">
             <div class="reel-laptop">
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/depannage-laptop.png" alt="" loading="lazy" />
+                  <img src="assets/img/mockups/depannage-laptop.webp" alt="" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
             </div>
             <div class="reel-phone">
-              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/depannage-mobile.png" alt="" loading="lazy" /></div>
+              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/depannage-mobile.webp" alt="" loading="lazy" /></div>
             </div>
-            <figcaption class="reel-cap"><strong>Dépannage 60</strong><span>Plombier · Électricien · Oise</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site dépannage</strong><span>Plombier · Électricien</span></figcaption>
           </article>
           <article class="reel-item" aria-hidden="true">
             <div class="reel-laptop">
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/bso-laptop.png" alt="" loading="lazy" />
+                  <img src="assets/img/mockups/bso-laptop.webp" alt="" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
             </div>
             <div class="reel-phone">
-              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/bso-mobile.png" alt="" loading="lazy" /></div>
+              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/bso-mobile.webp" alt="" loading="lazy" /></div>
             </div>
-            <figcaption class="reel-cap"><strong>BSO Bâtiment</strong><span>Maçonnerie · ITE · Vaucluse</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site maçonnerie</strong><span>Maçonnerie · ITE · Rénovation</span></figcaption>
           </article>
           <article class="reel-item" aria-hidden="true">
             <div class="reel-laptop">
               <div class="rl-bezel">
                 <div class="rl-screen">
                   <div class="rl-bar"><span class="rl-d rl-d-r"></span><span class="rl-d rl-d-y"></span><span class="rl-d rl-d-g"></span></div>
-                  <img src="assets/img/mockups/ecovap-laptop.png" alt="" loading="lazy" />
+                  <img src="assets/img/mockups/ecovap-laptop.webp" alt="" loading="lazy" />
                 </div>
               </div>
               <div class="rl-base"></div>
             </div>
             <div class="reel-phone">
-              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/ecovap-mobile.png" alt="" loading="lazy" /></div>
+              <div class="rp-bezel"><div class="rp-notch"></div><img src="assets/img/mockups/ecovap-mobile.webp" alt="" loading="lazy" /></div>
             </div>
-            <figcaption class="reel-cap"><strong>Ecovap Toiture</strong><span>Démoussage · Pyrénées-Atlantiques</span></figcaption>
+            <figcaption class="reel-cap"><strong>Site nettoyage de toiture</strong><span>Démoussage · Hydrofuge</span></figcaption>
           </article>
         </div>
       </div>
@@ -465,14 +487,15 @@
             </header>
             <ul class="cc-list">
               <li class="ok">Qualité souvent au rendez-vous</li>
-              <li class="ko">Acompte à verser <em>avant</em> de voir quoi que ce soit</li>
-              <li class="ko">Délais 2 à 4 mois</li>
-              <li class="ko">Devis qui s'allongent (options, "phases")</li>
-              <li class="ko">Codes d'accès parfois conservés par l'agence</li>
-              <li class="ko">Abonnement maintenance souvent imposé</li>
+              <li class="ko"><strong>30 % d'acompte</strong> versé avant de voir la moindre maquette</li>
+              <li class="ko">Délais <strong>2 à 4 mois</strong> entre signature et mise en ligne</li>
+              <li class="ko">Devis qui s'allongent (options, "phases", avenants)</li>
+              <li class="ko">Modifications après livraison facturées <strong>80 à 120&nbsp;€/h</strong></li>
+              <li class="ko">Codes d'accès / hébergement parfois conservés par l'agence</li>
+              <li class="ko">Abonnement maintenance imposé (60-150&nbsp;€/mois)</li>
               <li class="ko">Disproportionné pour un site vitrine d'artisan</li>
             </ul>
-            <p class="cc-foot">Du sérieux, mais à un prix qui mord.</p>
+            <p class="cc-foot">Du sérieux, mais à un prix qui mord et un cadre qui contraint.</p>
           </article>
 
         </div>
@@ -731,7 +754,11 @@
         <header class="section-head">
           <span class="eyebrow">Demande de maquette</span>
           <h2 id="form-title" class="reveal" data-reveal>Configuration de votre projet</h2>
-          <p class="lead reveal" data-reveal data-delay="100">Quelques questions sur votre activité pour préparer la maquette. 3 minutes.</p>
+          <p class="lead reveal" data-reveal data-delay="100">Quelques questions sur votre activité pour préparer la maquette.</p>
+          <span class="form-time-badge reveal" data-reveal data-delay="140">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            3 minutes en ligne
+          </span>
         </header>
 
         <div class="form-trust reveal" data-reveal data-delay="140">
@@ -909,6 +936,17 @@
     <div class="footer-bottom"><div class="container">© 2026 Batiproconnect. Tous droits réservés.</div></div>
   </footer>
 
+  <!-- STICKY CTA MOBILE -->
+  <div class="mobile-cta-bar" id="mobileCtaBar" aria-hidden="false">
+    <a href="https://wa.me/33756836351?text=Bonjour%2C%20je%20souhaite%20une%20maquette%20gratuite." class="mcb-wa" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.32A8 8 0 0 0 4.06 13.7L3 21l7.5-1a8 8 0 0 0 11.36-7.4 7.94 7.94 0 0 0-2.32-5.66 1 1 0 0 0-.94-.62Zm-5.6 13.5h0a6.6 6.6 0 0 1-3.4-.92l-.24-.14-2.6.36.4-2.5-.16-.26a6.62 6.62 0 0 1 5.16-9.84 6.5 6.5 0 0 1 4.7 1.94 6.5 6.5 0 0 1 1.94 4.7 6.62 6.62 0 0 1-5.8 6.66Zm3.62-4.94c-.2-.1-1.18-.58-1.36-.64s-.32-.1-.46.1-.52.64-.64.78-.24.14-.44 0a5.42 5.42 0 0 1-1.6-1 6 6 0 0 1-1.1-1.38c-.12-.2 0-.3.08-.4s.2-.24.3-.36a1.4 1.4 0 0 0 .2-.34.36.36 0 0 0 0-.34c0-.1-.46-1.1-.62-1.5s-.34-.34-.46-.34h-.4a.78.78 0 0 0-.56.26 2.3 2.3 0 0 0-.74 1.74 4 4 0 0 0 .84 2.14 9.18 9.18 0 0 0 3.5 3.1c.5.2.88.32 1.18.42a2.84 2.84 0 0 0 1.3.08 2.14 2.14 0 0 0 1.4-1 1.74 1.74 0 0 0 .12-1c0-.1-.18-.16-.38-.26Z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#formulaire?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=maquette&amp;utm_content=sticky-mobile" class="mcb-cta btn btn-cta">
+      Recevoir ma maquette <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
   <!-- BANDEAU RGPD / COOKIES -->
   <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consentement cookies" hidden>
     <div class="cookie-inner">
@@ -923,6 +961,6 @@
     </div>
   </div>
 
-  <script src="assets/js/script.js?v=8" defer></script>
+  <script src="assets/js/script.js?v=9" defer></script>
 </body>
 </html>

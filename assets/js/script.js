@@ -449,6 +449,24 @@
     });
   }
 
+  // ---------- Sticky CTA mobile ----------
+  const mobileCta = qs('#mobileCtaBar');
+  if (mobileCta) {
+    const formSection = qs('#formulaire');
+    function updateMobileCta() {
+      const scrolled = window.scrollY > 400;
+      // Masque la sticky CTA quand on entre dans le formulaire (évite le doublon)
+      let inForm = false;
+      if (formSection) {
+        const r = formSection.getBoundingClientRect();
+        inForm = r.top < window.innerHeight && r.bottom > 80;
+      }
+      mobileCta.classList.toggle('visible', scrolled && !inForm);
+    }
+    window.addEventListener('scroll', updateMobileCta, { passive: true });
+    updateMobileCta();
+  }
+
   // ---------- Cookie banner ----------
   const cookieBanner = qs('#cookieBanner');
   const cookieAccept = qs('#cookieAccept');
