@@ -2214,6 +2214,7 @@ em, .italic-serif {
   border-color: var(--c-error);
   background: rgba(220,38,38,.10);
 }
+.bp-cb-success[hidden] { display: none !important; }
 .bp-cb-success {
   grid-column: 1 / -1;
   display: flex;
