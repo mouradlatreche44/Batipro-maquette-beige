@@ -1,0 +1,586 @@
+/* =========================================================
+   Batiproconnect — Premium upgrades v1
+   Boutons, icônes, formulaire, bloc rappel, reassurance pills
+   ========================================================= */
+
+/* ---------- Tokens premium ---------- */
+:root {
+  --grad-cta: linear-gradient(180deg, #e08a2e 0%, #c87a2c 50%, #a8631d 100%);
+  --grad-cta-hover: linear-gradient(180deg, #ed9b3f 0%, #d68534 50%, #b66c20 100%);
+  --shadow-cta-premium:
+    0 1px 0 rgba(255,255,255,.32) inset,
+    0 -1px 0 rgba(0,0,0,.18) inset;
+  --shadow-cta-premium-hover:
+    0 1px 0 rgba(255,255,255,.38) inset,
+    0 -1px 0 rgba(0,0,0,.18) inset;
+}
+
+/* ---------- BOUTONS CTA premium ---------- */
+.btn {
+  position: relative;
+  isolation: isolate;
+  letter-spacing: 0.005em;
+  transition:
+    transform 220ms cubic-bezier(.34,1.56,.64,1),
+    box-shadow 220ms cubic-bezier(.4,0,.2,1),
+    filter 220ms ease;
+}
+.btn-cta {
+  background: var(--grad-cta);
+  color: #fff;
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: var(--shadow-cta-premium);
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  font-weight: 700;
+}
+/* Halo retiré (demande client) */
+.btn-cta::before { display: none; }
+/* Sheen — reflet brillant qui balaye au survol */
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg,
+    transparent 30%,
+    rgba(255,255,255,.32) 45%,
+    rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,.32) 55%,
+    transparent 70%);
+  background-size: 220% 100%;
+  background-position: 120% 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 240ms ease, background-position 700ms cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.btn-cta:hover {
+  background: var(--grad-cta-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cta-premium-hover);
+  filter: saturate(1.08);
+}
+.btn-cta:hover::after { opacity: 1; background-position: -20% 0; }
+.btn-cta:active {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.18) inset,
+    0 -1px 0 rgba(0,0,0,.22) inset;
+  filter: saturate(.95) brightness(.96);
+}
+.btn-cta:focus-visible {
+  outline: 0;
+  box-shadow:
+    var(--shadow-cta-premium),
+    0 0 0 3px rgba(217, 119, 6, .35);
+}
+/* Flèche du CTA — animation au hover */
+.btn-cta > span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+}
+.btn-cta:hover > span[aria-hidden="true"] { transform: translateX(4px); }
+
+/* Bouton ghost premium */
+.btn-ghost {
+  background: #fff;
+  border: 1.5px solid var(--c-line);
+  box-shadow: 0 1px 2px rgba(11,29,58,.04);
+  color: var(--c-ink);
+}
+.btn-ghost:hover {
+  border-color: var(--c-ink);
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(11,29,58,.10);
+}
+
+/* ---------- HERO promises (pills check) — premium ---------- */
+.hero-promises li {
+  background: linear-gradient(180deg, #ffffff 0%, #fbf7ee 100%);
+  border: 1px solid rgba(11,29,58,.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 1px 2px rgba(11,29,58,.04),
+    0 6px 14px -6px rgba(11,29,58,.10);
+  padding: 11px 18px 11px 13px;
+}
+.hero-promises li:hover {
+  border-color: rgba(22,163,74,.35);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 4px 8px rgba(22,163,74,.10),
+    0 14px 24px -8px rgba(22,163,74,.20);
+}
+.check {
+  background: radial-gradient(circle at 35% 30%, #2fc55a 0%, #16a34a 60%, #128039 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.4) inset,
+    0 -1px 0 rgba(0,0,0,.12) inset,
+    0 3px 8px rgba(22,163,74,.40),
+    0 1px 2px rgba(22,163,74,.30);
+  width: 22px; height: 22px;
+  font-size: 12px;
+  position: relative;
+}
+.check::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.25), transparent 45%);
+  pointer-events: none;
+}
+
+/* ---------- ICÔNES "advantages" — premium gradient + ring ---------- */
+.adv-icon {
+  position: relative;
+  background: linear-gradient(180deg, #fff5e6 0%, #fde6c8 100%);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 -1px 0 rgba(200,122,44,.10) inset,
+    0 1px 2px rgba(200,122,44,.10),
+    0 8px 18px -8px rgba(200,122,44,.30);
+  color: var(--c-ocre);
+}
+.adv-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(200,122,44,.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.adv-card:hover .adv-icon {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 4px 8px rgba(200,122,44,.20),
+    0 16px 28px -8px rgba(200,122,44,.45);
+}
+.adv-icon svg {
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.5));
+  stroke-width: 2.2;
+}
+
+/* ---------- ICÔNES "trades" — pastilles premium ---------- */
+.trade-icon {
+  position: relative;
+  background: linear-gradient(180deg, #fff5e6 0%, #fde6c8 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 -1px 0 rgba(200,122,44,.08) inset,
+    0 1px 2px rgba(200,122,44,.08),
+    0 6px 14px -6px rgba(200,122,44,.22);
+}
+.trade-icon::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 55%);
+  pointer-events: none;
+}
+.trade-card:hover .trade-icon {
+  transform: scale(1.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 4px 8px rgba(200,122,44,.18),
+    0 14px 26px -8px rgba(200,122,44,.40);
+  transition: transform 280ms cubic-bezier(.34,1.56,.64,1), box-shadow 280ms ease;
+}
+.trade-card--energy .trade-icon {
+  background: radial-gradient(circle at 35% 30%, #e69447 0%, #c87a2c 70%, #a8631d 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.4) inset,
+    0 -1px 0 rgba(0,0,0,.18) inset,
+    0 4px 10px rgba(200,122,44,.40),
+    0 14px 26px -8px rgba(200,122,44,.50);
+  color: #fff;
+}
+
+/* ---------- ICÔNES "contact" — premium ---------- */
+.cc-ico {
+  background: linear-gradient(180deg, #eef3ff 0%, #dde6f8 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.95) inset,
+    0 -1px 0 rgba(30,58,138,.10) inset,
+    0 2px 4px rgba(30,58,138,.10),
+    0 10px 20px -6px rgba(30,58,138,.22);
+  border-radius: 14px;
+}
+.contact-card--wa .cc-ico {
+  background: linear-gradient(180deg, #d8f5e1 0%, #b8e9c8 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.95) inset,
+    0 -1px 0 rgba(22,163,74,.12) inset,
+    0 2px 4px rgba(22,163,74,.10),
+    0 10px 20px -6px rgba(22,163,74,.26);
+}
+
+/* ---------- DIFF mark — un peu plus premium ---------- */
+.diff-mark {
+  background: radial-gradient(circle at 35% 30%, #fff 0%, #fff8ec 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 4px 0 var(--c-ocre),
+    0 14px 28px -8px rgba(200,122,44,.35);
+}
+
+/* ---------- check-circle (price-list) — premium ---------- */
+.check-circle {
+  background: radial-gradient(circle at 35% 30%, #2fc55a 0%, #16a34a 60%, #128039 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.4) inset,
+    0 -1px 0 rgba(0,0,0,.12) inset,
+    0 2px 6px rgba(22,163,74,.32);
+}
+
+/* =========================================================
+   BLOC RAPPEL — Pas le temps ? On vous rappelle
+   ========================================================= */
+.section-callback {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--c-paper);
+}
+.callback-card {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  background:
+    radial-gradient(900px 400px at 100% 0%, rgba(217,119,6,.12), transparent 60%),
+    radial-gradient(700px 350px at 0% 100%, rgba(30,58,138,.18), transparent 60%),
+    linear-gradient(135deg, #0f2347 0%, #07142e 100%);
+  border-radius: 22px;
+  padding: clamp(24px, 3.5vw, 36px) clamp(24px, 4vw, 44px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.06) inset,
+    0 -1px 0 rgba(0,0,0,.4) inset,
+    0 30px 60px -20px rgba(7,20,46,.50),
+    0 14px 30px -10px rgba(7,20,46,.30);
+  border: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+}
+/* Grain subtil */
+.callback-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: .6;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.callback-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 22px;
+}
+
+.callback-icon {
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: grid; place-items: center;
+  background: linear-gradient(180deg, #e08a2e 0%, #c87a2c 60%, #a8631d 100%);
+  color: #fff;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.32) inset,
+    0 -1px 0 rgba(0,0,0,.22) inset,
+    0 4px 10px rgba(168,99,29,.35),
+    0 12px 24px -8px rgba(168,99,29,.45);
+  position: relative;
+}
+.callback-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.25), transparent 50%);
+  pointer-events: none;
+}
+.callback-icon svg { width: 26px; height: 26px; position: relative; z-index: 1; }
+
+.callback-text { color: #fff; min-width: 0; }
+.callback-text h3 {
+  font-family: var(--ff-display);
+  color: #fff;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+.callback-text p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.5;
+}
+
+.callback-input-wrap {
+  position: relative;
+  min-width: 220px;
+}
+.callback-input-wrap svg {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 16px; height: 16px;
+  color: rgba(255,255,255,.45);
+  pointer-events: none;
+}
+.callback-input {
+  width: 100%;
+  padding: 14px 16px 14px 38px;
+  font: inherit;
+  font-size: 15px;
+  color: #fff;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+.callback-input::placeholder { color: rgba(255,255,255,.40); }
+.callback-input:focus {
+  outline: 0;
+  background: rgba(255,255,255,.10);
+  border-color: rgba(217,119,6,.55);
+  box-shadow: 0 0 0 4px rgba(217,119,6,.18);
+}
+.callback-input.invalid {
+  border-color: #f87171;
+  background: rgba(248,113,113,.10);
+}
+
+.callback-btn {
+  white-space: nowrap;
+}
+
+.callback-success {
+  display: none;
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: rgba(22,163,74,.12);
+  border: 1px solid rgba(22,163,74,.35);
+  border-radius: 12px;
+  color: #b9f2cf;
+  font-size: 14.5px;
+  font-weight: 600;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.callback-success.show { display: flex; animation: cbFade .5s ease; }
+.callback-success svg { width: 18px; height: 18px; flex-shrink: 0; color: #4ade80; }
+@keyframes cbFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 880px) {
+  .callback-inner {
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+  }
+  .callback-input-wrap,
+  .callback-btn { grid-column: 1 / -1; }
+  .callback-input-wrap { min-width: 0; }
+}
+
+/* =========================================================
+   FORMULAIRE — premium upgrade
+   ========================================================= */
+.form-wrapper {
+  background:
+    radial-gradient(800px 400px at 0% 0%, rgba(245,158,11,.04), transparent 60%),
+    #fff;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 24px 70px -20px rgba(11,29,58,.18),
+    0 8px 22px -10px rgba(11,29,58,.10);
+  border: 1px solid rgba(11,29,58,.06);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+/* Liseré ocre en haut */
+.form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--c-blue) 0%, var(--c-ocre) 50%, var(--c-blue) 100%);
+  background-size: 200% 100%;
+  animation: formStrip 8s linear infinite;
+}
+@keyframes formStrip { to { background-position: 200% 0; } }
+
+.progress-bar {
+  height: 10px;
+  background: #f1ebde;
+  box-shadow: inset 0 1px 2px rgba(11,29,58,.06);
+  overflow: hidden;
+}
+.progress-fill {
+  background:
+    linear-gradient(90deg, #1e3a8a 0%, #2d4ea0 50%, #c87a2c 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.30) inset,
+    0 0 12px rgba(200,122,44,.40);
+  position: relative;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,.25) 50%,
+    transparent 100%);
+  animation: progShine 2.4s linear infinite;
+}
+@keyframes progShine {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+/* Inputs premium */
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="number"],
+.field textarea {
+  background: #fff;
+  border: 1.5px solid #e5dccb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15.5px;
+  box-shadow: 0 1px 2px rgba(11,29,58,.04);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background 200ms ease,
+    transform 200ms ease;
+}
+.field input[type="text"]:hover,
+.field input[type="email"]:hover,
+.field input[type="tel"]:hover,
+.field input[type="number"]:hover,
+.field textarea:hover {
+  border-color: #c8b896;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: 0;
+  background: #fff;
+  border-color: var(--c-ocre);
+  box-shadow:
+    0 0 0 4px rgba(200,122,44,.15),
+    0 4px 12px rgba(200,122,44,.10);
+}
+
+/* Labels premium */
+.field label,
+.field-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--c-ink);
+  text-transform: none;
+  margin-bottom: 9px;
+}
+
+/* Radios & checkboxes premium */
+.radio,
+.checkbox {
+  background: #fff;
+  border: 1.5px solid #e5dccb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(11,29,58,.03);
+  transition: all 220ms cubic-bezier(.4,0,.2,1);
+  position: relative;
+  font-weight: 500;
+  color: var(--c-text);
+}
+.radio:hover,
+.checkbox:hover {
+  border-color: var(--c-ocre);
+  background: #fffaf0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(200,122,44,.12);
+}
+.radio:has(input:checked),
+.checkbox:has(input:checked) {
+  border-color: var(--c-ocre);
+  background: linear-gradient(180deg, #fff8ec 0%, #fff 100%);
+  box-shadow:
+    0 0 0 1px var(--c-ocre) inset,
+    0 4px 12px rgba(200,122,44,.18);
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.radio:has(input:checked)::after,
+.checkbox:has(input:checked)::after {
+  content: "✓";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  background: var(--c-ocre);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(200,122,44,.40);
+}
+.radio input,
+.checkbox input {
+  accent-color: var(--c-ocre);
+  width: 18px; height: 18px;
+}
+/* On masque la coche native quand "checked" car on affiche notre badge */
+.radio:has(input:checked) input,
+.checkbox:has(input:checked) input {
+  opacity: 0.6;
+}
+
+.form-slide-title {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+}
+.form-slide-title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 56px; height: 3px;
+  background: linear-gradient(90deg, var(--c-ocre) 0%, var(--c-gold) 100%);
+  border-radius: 2px;
+}
+
+.progress-pct {
+  background: linear-gradient(180deg, var(--c-ocre) 0%, var(--c-gold-2) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* Boutons du formulaire — un poil plus présents */
+.form-actions .btn {
+  padding: 14px 26px;
+  font-size: 15px;
+}
