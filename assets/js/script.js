@@ -417,15 +417,16 @@
         const utms = getUtms();
         const utmStr = Object.entries(utms).filter(([_, v]) => v && v !== 'undefined').map(([k, v]) => `${k}=${v}`).join(' · ') || '—';
         const body = {
-          _subject: '📞 Demande de rappel rapide — ' + val,
+          _subject: '📞 RAPPEL DEMANDÉ — ' + val,
           _template: 'table',
           _captcha: 'false',
-          email: '',
+          // Pas d'email côté visiteur (formulaire abrégé), on met l'email de notification pour reply-to
+          email: NOTIFICATION_EMAIL,
           '📞 Téléphone à rappeler': val,
+          '🏷️ Type de demande': 'Rappel rapide (formulaire abrégé "Pas le temps")',
           '🔗 Page d\'origine': window.location.href,
           '📊 UTM': utmStr,
           '🕐 Envoyé le': new Date().toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }),
-          '🏷️ Type': 'Callback rapide (formulaire abrégé)',
         };
         const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFICATION_EMAIL), {
           method: 'POST',

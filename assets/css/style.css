@@ -181,7 +181,7 @@ em, .italic-serif {
   html { scroll-behavior: auto; }
 }
 
-/* ---------- Navbar — version premium ---------- */
+/* ---------- Header complet : Topbar + Navbar ---------- */
 .navbar {
   position: sticky; top: 0; z-index: 50;
   background: rgba(250, 246, 238, 0.78);
@@ -190,6 +190,7 @@ em, .italic-serif {
   border-bottom: 1px solid rgba(11,29,58,.06);
   transition: border-color var(--t-fast), background var(--t-fast), box-shadow var(--t-fast), padding var(--t-fast);
 }
+
 .navbar::after {
   content: "";
   position: absolute;
@@ -861,6 +862,29 @@ em, .italic-serif {
   box-shadow: 0 6px 0 var(--c-ocre);
 }
 .diff-mark svg { width: 32px; height: 32px; }
+.diff-eyebrow {
+  display: inline-block;
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ocre);
+  background: rgba(217, 119, 6, .10);
+  border: 1px solid rgba(217, 119, 6, .28);
+  padding: 8px 18px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, .15);
+}
+.diff-card h2 em {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--c-ocre);
+  display: block;
+  margin-top: 6px;
+}
 .diff-card h2 { margin-bottom: 24px; }
 .diff-card p { font-size: clamp(17px, 1.6vw, 20px); color: var(--c-text); max-width: 720px; margin: 0 auto; }
 
