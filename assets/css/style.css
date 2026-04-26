@@ -2241,60 +2241,6 @@ em, .italic-serif {
 }
 
 /* =========================================================
-   STICKY CTA MOBILE — bottom bar avec WhatsApp + Maquette
-   ========================================================= */
-.mobile-cta-bar {
-  display: none;
-  position: fixed;
-  left: 12px; right: 12px; bottom: 12px;
-  z-index: 90;
-  padding: 10px;
-  gap: 10px;
-  background: rgba(11, 29, 58, 0.94);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  border-radius: 20px;
-  box-shadow: 0 12px 32px -8px rgba(11,29,58,.4), 0 4px 10px rgba(0,0,0,.18);
-  align-items: center;
-  transform: translateY(120%);
-  transition: transform .35s cubic-bezier(.22,.61,.36,1);
-}
-.mobile-cta-bar.visible { transform: translateY(0); }
-.mcb-wa {
-  flex-shrink: 0;
-  display: inline-grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  background: #25D366;
-  border-radius: 14px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0;
-  box-shadow: 0 4px 10px rgba(37,211,102,.40);
-  transition: transform .2s ease;
-}
-.mcb-wa svg { width: 26px; height: 26px; color: #fff; }
-.mcb-wa:hover { transform: scale(1.05); color: #fff; }
-.mcb-wa span { display: none; }
-.mcb-cta {
-  flex: 1;
-  padding: 14px 18px;
-  font-size: 14.5px;
-  border-radius: 14px;
-  white-space: nowrap;
-  letter-spacing: -0.005em;
-}
-
-@media (max-width: 760px) {
-  .mobile-cta-bar { display: flex; }
-  /* Évite que le contenu soit caché derrière la bar */
-  body { padding-bottom: 80px; }
-  /* Si bandeau RGPD ouvert, on remonte la sticky CTA pour qu'elles ne se chevauchent pas */
-  body:has(.cookie-banner:not([hidden])) .mobile-cta-bar { transform: translateY(120%); }
-}
-
-/* =========================================================
    COOKIE / RGPD BANNER
    ========================================================= */
 .cookie-banner {
