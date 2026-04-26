@@ -52,7 +52,7 @@
 
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   font-family: var(--ff-sans);
@@ -1962,8 +1962,11 @@ em, .italic-serif {
   background: var(--c-ocre);
   color: #fff;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1;
+  font-family: var(--ff-sans);
   margin-top: 2px;
+  padding-bottom: 1px;
   box-shadow: 0 4px 10px rgba(217, 119, 6, .35);
 }
 .seo-checklist li strong {
@@ -2403,12 +2406,12 @@ em, .italic-serif {
    ========================================================= */
 .section-form { background: var(--c-cream); }
 
+.form-time-wrap { text-align: center; margin-top: 16px; }
 .form-time-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  margin: 16px auto 0;
   background: rgba(217, 119, 6, .08);
   border: 1px solid rgba(217, 119, 6, .25);
   border-radius: 999px;
@@ -2416,8 +2419,13 @@ em, .italic-serif {
   font-weight: 700;
   color: var(--c-ocre);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
-.form-time-badge svg { width: 16px; height: 16px; flex-shrink: 0; }
+.form-time-badge svg {
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0;
+}
 
 .form-trust {
   display: grid;
