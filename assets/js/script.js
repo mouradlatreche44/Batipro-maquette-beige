@@ -293,32 +293,93 @@
   // Remplacez l'URL ENDPOINT_URL par votre webhook (Brevo / Make / Zapier / endpoint perso).
   // Le payload contient tous les champs + UTM + URL + timestamp.
   // Renvoie une Promise — résolue = succès, rejetée = erreur (alerte affichée).
-  // Web3Forms — clé liée à contact@batiproconnect.com
-  const WEB3FORMS_ACCESS_KEY = 'bc4ee9d2-50c0-4d9e-8290-4a48c725bef9';
+  // FormSubmit — l'activation a déjà été faite pour contact@batiproconnect.com
+  const NOTIFICATION_EMAIL = 'contact@batiproconnect.com';
+
+  // Traductions des choix radio/checkbox vers du français lisible
+  const VALUE_LABELS = {
+    // effectif
+    '1': '1 personne (travaille seul)',
+    '2-9': '2 à 9 personnes',
+    '10+': 'Plus de 10 personnes',
+    // clientele
+    'particuliers': 'Particuliers',
+    'professionnels': 'Professionnels',
+    'les-deux': 'Particuliers et professionnels',
+    // logo
+    'oui': 'Oui',
+    'creer': 'Non — à créer',
+    'texte': 'Non — juste écrire le nom',
+    // photos
+    'exemples': 'Non — visuels d\'exemple',
+    // atouts
+    'decennale': 'Garantie décennale',
+    'rge': 'Label RGE / Qualibat',
+    'devis-gratuit': 'Devis gratuit',
+    'rapide': 'Intervention rapide',
+    'familiale': 'Entreprise familiale',
+    'avis': 'Avis clients positifs',
+  };
+
+  function prettify(val) {
+    if (val == null || val === '') return '—';
+    if (Array.isArray(val)) return val.map(v => VALUE_LABELS[v] || v).join(', ');
+    return VALUE_LABELS[val] || val;
+  }
 
   async function submitForm(payload) {
-    const flat = { ...payload };
-    if (Array.isArray(flat.atouts)) flat.atouts = flat.atouts.join(', ');
-    if (flat.utm && typeof flat.utm === 'object') {
-      Object.entries(flat.utm).forEach(([k, v]) => { flat['utm_' + k] = v; });
-      delete flat.utm;
+    const p = { ...payload };
+
+    // Aplatit UTM
+    let utmStr = '—';
+    if (p.utm && typeof p.utm === 'object') {
+      const utmEntries = Object.entries(p.utm).filter(([_, v]) => v && v !== 'undefined');
+      if (utmEntries.length) utmStr = utmEntries.map(([k, v]) => `${k}=${v}`).join(' · ');
+      delete p.utm;
     }
 
+    // Construit le payload français, ordonné, avec libellés lisibles
     const body = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `Nouvelle demande de maquette — ${flat.company || flat.email || 'Sans nom'}`,
-      from_name: 'Landing Batiproconnect',
-      ...flat,
+      _subject: `🟠 Nouvelle demande de maquette — ${p.company || p.email || 'Sans nom'}`,
+      _template: 'table',
+      _captcha: 'false',
+      _autoresponse: `Bonjour,\n\nNous avons bien reçu votre demande de maquette pour ${p.company || 'votre entreprise'}. Nous revenons vers vous sous 7 jours avec une proposition personnalisée.\n\nÀ très vite,\nL'équipe Batiproconnect\ncontact@batiproconnect.com`,
+
+      // Champ technique requis par FormSubmit pour l'auto-réponse / reply-to
+      email: p.email || '',
+
+      '🏢 Entreprise':            prettify(p.company),
+      '👥 Effectif':               prettify(p.effectif),
+      '🔧 Métier principal':       prettify(p.job),
+      '📅 Années d\'activité':     prettify(p.years),
+
+      '📧 Email':                  prettify(p.email),
+      '📞 Téléphone':              prettify(p.phone),
+      '📍 Zone d\'intervention':   prettify(p.zone),
+      '🎯 Type de clientèle':      prettify(p.clientele),
+
+      '⭐ 3 prestations principales': prettify(p.services),
+      '🏷️ Marques partenaires':       prettify(p.brands),
+      '🏆 Atouts & certifications':   prettify(p.atouts),
+
+      '🎨 Logo':                   prettify(p.logo),
+      '📷 Photos de chantiers':    prettify(p.photos),
+      '🖌️ Couleurs préférées':     prettify(p.colors),
+      '✨ Élément différenciant':   prettify(p.plus),
+
+      '🔗 Page d\'origine':        p.page || '—',
+      '📊 UTM':                    utmStr,
+      '🕐 Envoyé le':              p.sentAt ? new Date(p.sentAt).toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }) : '—',
     };
 
-    const res = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFICATION_EMAIL), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(body),
     });
     const json = await res.json().catch(() => ({}));
-    console.log('[Web3Forms] response:', res.status, json);
-    if (!res.ok || json.success === false) {
+    console.log('[FormSubmit] response:', res.status, json);
+    if (!res.ok || json.success === 'false' || json.success === false) {
       throw new Error(json.message || ('HTTP ' + res.status));
     }
     return json;
@@ -330,4 +391,78 @@
   adjustHeight();
   window.addEventListener('load', adjustHeight);
   window.addEventListener('resize', adjustHeight);
+
+  // ---------- Callback rapide (bloc "Pas le temps ?") ----------
+  const callbackForm = qs('#callbackForm');
+  const callbackPhone = qs('#callbackPhone');
+  const callbackSuccess = qs('#callbackSuccess');
+  if (callbackForm) {
+    callbackForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const val = (callbackPhone.value || '').trim();
+      // Validation simple : au moins 10 chiffres
+      const digits = val.replace(/\D/g, '');
+      if (digits.length < 10) {
+        callbackPhone.classList.add('error');
+        callbackPhone.focus();
+        return;
+      }
+      callbackPhone.classList.remove('error');
+      const submitBtn = callbackForm.querySelector('button[type=submit]');
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Envoi...';
+
+      try {
+        const utms = getUtms();
+        const utmStr = Object.entries(utms).filter(([_, v]) => v && v !== 'undefined').map(([k, v]) => `${k}=${v}`).join(' · ') || '—';
+        const body = {
+          _subject: '📞 Demande de rappel rapide — ' + val,
+          _template: 'table',
+          _captcha: 'false',
+          email: '',
+          '📞 Téléphone à rappeler': val,
+          '🔗 Page d\'origine': window.location.href,
+          '📊 UTM': utmStr,
+          '🕐 Envoyé le': new Date().toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }),
+          '🏷️ Type': 'Callback rapide (formulaire abrégé)',
+        };
+        const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFICATION_EMAIL), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === 'false' || json.success === false) {
+          throw new Error(json.message || ('HTTP ' + res.status));
+        }
+        // Succès : masque le formulaire, affiche le message
+        callbackForm.style.display = 'none';
+        callbackSuccess.hidden = false;
+        if (window.dataLayer) window.dataLayer.push({ event: 'callback_request_sent' });
+      } catch (err) {
+        console.error('[Callback] error:', err);
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        alert('Une erreur est survenue. Réessayez ou contactez-nous au 07 56 83 63 51.');
+      }
+    });
+  }
+
+  // ---------- Cookie banner ----------
+  const cookieBanner = qs('#cookieBanner');
+  const cookieAccept = qs('#cookieAccept');
+  const cookieRefuse = qs('#cookieRefuse');
+  if (cookieBanner) {
+    let stored = null;
+    try { stored = localStorage.getItem('bpc_cookie_consent'); } catch(_) {}
+    if (!stored) cookieBanner.hidden = false;
+    function setConsent(value) {
+      try { localStorage.setItem('bpc_cookie_consent', value); } catch(_) {}
+      cookieBanner.hidden = true;
+      if (window.dataLayer) window.dataLayer.push({ event: 'cookie_consent', value: value });
+    }
+    if (cookieAccept) cookieAccept.addEventListener('click', () => setConsent('accepted'));
+    if (cookieRefuse) cookieRefuse.addEventListener('click', () => setConsent('refused'));
+  }
 })();
