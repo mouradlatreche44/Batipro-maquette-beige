@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://batiproconnect.com/formulaire-maquette/" />
 
   <link rel="stylesheet" href="assets/css/style.css?v=8" />
-  <link rel="stylesheet" href="assets/css/premium.css?v=3" />
+  <link rel="stylesheet" href="assets/css/premium.css?v=6" />
 
   <script type="application/ld+json">
   {
@@ -781,49 +781,343 @@
           </div>
         </div>
 
-        <div class="form-wrapper reveal" data-reveal data-delay="180">
+        <div class="form-wrapper form-wrapper--v2 reveal" data-reveal data-delay="180">
           <div class="form-progress" aria-hidden="true">
-            <div class="progress-meta"><span class="progress-label">Étape <span id="stepCurrent">1</span> sur <span id="stepTotal">4</span></span><span class="progress-pct"><span id="progressPct">25</span>%</span></div>
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 25%"></div></div>
+            <div class="progress-meta"><span class="progress-label">Étape <span id="stepCurrent">1</span> sur <span id="stepTotal">7</span></span><span class="progress-pct"><span id="progressPct">14</span>%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 14%"></div></div>
           </div>
 
-          <form id="batiproForm" class="multi-form" novalidate>
+          <form id="batiproForm" class="multi-form multi-form--v2" novalidate>
             <div class="slides-viewport" id="slidesViewport">
               <div class="slides-track" id="slidesTrack">
+
+                <!-- ÉTAPE 1 : MÉTIER -->
                 <fieldset class="form-slide" data-slide="1" aria-labelledby="slide1-title">
-                  <legend class="form-slide-title" id="slide1-title">Présentez-nous votre entreprise</legend>
-                  <div class="field"><label for="company">Nom de votre entreprise <span class="req">*</span></label><input type="text" id="company" name="company" required autocomplete="organization" placeholder="Ex : Plomberie Martin SARL" /><span class="error-msg" data-error-for="company"></span></div>
-                  <div class="field"><span class="field-label">Combien êtes-vous dans l'entreprise&nbsp;? <span class="req">*</span></span><div class="radio-group" data-required="effectif"><label class="radio"><input type="radio" name="effectif" value="1" required /><span>1 personne (je travaille seul)</span></label><label class="radio"><input type="radio" name="effectif" value="2-9" /><span>2 à 9 personnes</span></label><label class="radio"><input type="radio" name="effectif" value="10+" /><span>Plus de 10 personnes</span></label></div><span class="error-msg" data-error-for="effectif"></span></div>
-                  <div class="field"><label for="job">Quel est votre métier principal&nbsp;? <span class="req">*</span></label><input type="text" id="job" name="job" required placeholder="Plombier, électricien, couvreur, maçon..." /><span class="error-msg" data-error-for="job"></span></div>
-                  <div class="field"><label for="years">Depuis combien d'années exercez-vous&nbsp;? <span class="opt">(optionnel)</span></label><input type="number" id="years" name="years" min="0" max="100" placeholder="Ex : 12" /></div>
+                  <legend class="form-slide-title" id="slide1-title">Quel est votre métier&nbsp;?</legend>
+                  <p class="form-slide-help">Plusieurs choix possibles si vous faites plusieurs corps de métier.</p>
+
+                  <div class="big-card-grid" data-multi="trades">
+                    <label class="big-card" data-trade="plombier"><input type="checkbox" name="trades" value="plombier" /><span class="big-card-icon" aria-hidden="true">🔧</span><span class="big-card-label">Plombier</span></label>
+                    <label class="big-card" data-trade="electricien"><input type="checkbox" name="trades" value="electricien" /><span class="big-card-icon" aria-hidden="true">⚡</span><span class="big-card-label">Électricien</span></label>
+                    <label class="big-card" data-trade="couvreur"><input type="checkbox" name="trades" value="couvreur" /><span class="big-card-icon" aria-hidden="true">🏠</span><span class="big-card-label">Couvreur</span></label>
+                    <label class="big-card" data-trade="macon"><input type="checkbox" name="trades" value="macon" /><span class="big-card-icon" aria-hidden="true">🧱</span><span class="big-card-label">Maçon</span></label>
+                    <label class="big-card" data-trade="menuisier"><input type="checkbox" name="trades" value="menuisier" /><span class="big-card-icon" aria-hidden="true">🪚</span><span class="big-card-label">Menuisier</span></label>
+                    <label class="big-card" data-trade="peintre"><input type="checkbox" name="trades" value="peintre" /><span class="big-card-icon" aria-hidden="true">🎨</span><span class="big-card-label">Peintre</span></label>
+                    <label class="big-card" data-trade="paysagiste"><input type="checkbox" name="trades" value="paysagiste" /><span class="big-card-icon" aria-hidden="true">🌿</span><span class="big-card-label">Paysagiste</span></label>
+                    <label class="big-card" data-trade="energie"><input type="checkbox" name="trades" value="energie" /><span class="big-card-icon" aria-hidden="true">☀️</span><span class="big-card-label">Rénovation énergétique</span></label>
+                    <label class="big-card" data-trade="multi"><input type="checkbox" name="trades" value="multi" /><span class="big-card-icon" aria-hidden="true">🛠️</span><span class="big-card-label">Multiservice</span></label>
+                    <label class="big-card big-card--add" data-trade="autre"><input type="checkbox" name="trades" value="autre" /><span class="big-card-icon" aria-hidden="true">➕</span><span class="big-card-label">Autre métier</span></label>
+                  </div>
+                  <span class="error-msg" data-error-for="trades"></span>
+
+                  <div class="conditional-block" id="otherTradeBlock" hidden>
+                    <label for="tradeOther">Précisez votre métier <span class="req">*</span></label>
+                    <input type="text" id="tradeOther" name="tradeOther" placeholder="Ex : Carreleur, façadier, vitrier…" />
+                  </div>
+
+                  <div class="info-banner" id="multiTradeBanner" hidden>
+                    <span aria-hidden="true">✨</span> Mode multiservice activé. On structurera votre site avec une section par métier.
+                  </div>
+
                   <div class="form-actions"><span></span><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
                 </fieldset>
 
+                <!-- ÉTAPE 2 : ENTREPRISE -->
                 <fieldset class="form-slide" data-slide="2" aria-labelledby="slide2-title">
-                  <legend class="form-slide-title" id="slide2-title">Vos coordonnées et votre zone</legend>
-                  <div class="field"><label for="email">Votre email professionnel <span class="req">*</span></label><input type="email" id="email" name="email" required autocomplete="email" placeholder="contact@votre-entreprise.fr" /><span class="error-msg" data-error-for="email"></span></div>
-                  <div class="field"><label for="phone">Votre numéro de téléphone <span class="req">*</span></label><input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78" /><span class="error-msg" data-error-for="phone"></span></div>
-                  <div class="field"><label for="zone">Où intervenez-vous&nbsp;? <span class="req">*</span></label><textarea id="zone" name="zone" rows="2" required placeholder="Ex : Lyon et tout le département du Rhône (69)"></textarea><span class="error-msg" data-error-for="zone"></span></div>
-                  <div class="field"><span class="field-label">Vous travaillez avec&nbsp;: <span class="req">*</span></span><div class="radio-group" data-required="clientele"><label class="radio"><input type="radio" name="clientele" value="particuliers" required /><span>Des particuliers</span></label><label class="radio"><input type="radio" name="clientele" value="professionnels" /><span>Des professionnels</span></label><label class="radio"><input type="radio" name="clientele" value="les-deux" /><span>Les deux</span></label></div><span class="error-msg" data-error-for="clientele"></span></div>
+                  <legend class="form-slide-title" id="slide2-title">Votre entreprise</legend>
+
+                  <div class="field">
+                    <label for="company">Nom de l'entreprise <span class="req">*</span></label>
+                    <input type="text" id="company" name="company" required autocomplete="organization" placeholder="Ex : Plomberie Martin SARL" />
+                    <span class="error-msg" data-error-for="company"></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Combien êtes-vous&nbsp;? <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="effectif">
+                      <label class="big-card big-card--sm"><input type="radio" name="effectif" value="1" required /><span class="big-card-icon" aria-hidden="true">👤</span><span class="big-card-label">Tout seul</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="effectif" value="2-9" /><span class="big-card-icon" aria-hidden="true">👥</span><span class="big-card-label">2 à 9</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="effectif" value="10+" /><span class="big-card-icon" aria-hidden="true">👨‍👩‍👧‍👦</span><span class="big-card-label">10 et +</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="effectif"></span>
+                  </div>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="founded">Année de création <span class="opt">(optionnel)</span></label>
+                      <input type="number" id="founded" name="founded" min="1900" max="2026" placeholder="Ex : 2008" />
+                    </div>
+                    <div class="field">
+                      <label for="city">Ville principale <span class="req">*</span></label>
+                      <input type="text" id="city" name="city" required placeholder="Ex : Lyon" />
+                      <span class="error-msg" data-error-for="city"></span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Rayon d'intervention <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--5" data-required="radius">
+                      <label class="big-card big-card--xs"><input type="radio" name="radius" value="10km" required /><span class="big-card-label">10 km</span></label>
+                      <label class="big-card big-card--xs"><input type="radio" name="radius" value="25km" /><span class="big-card-label">25 km</span></label>
+                      <label class="big-card big-card--xs"><input type="radio" name="radius" value="50km" /><span class="big-card-label">50 km</span></label>
+                      <label class="big-card big-card--xs"><input type="radio" name="radius" value="100km" /><span class="big-card-label">100 km</span></label>
+                      <label class="big-card big-card--xs"><input type="radio" name="radius" value="france" /><span class="big-card-label">France</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="radius"></span>
+                  </div>
+
                   <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
                 </fieldset>
 
+                <!-- ÉTAPE 3 : VOUS & IMAGE -->
                 <fieldset class="form-slide" data-slide="3" aria-labelledby="slide3-title">
-                  <legend class="form-slide-title" id="slide3-title">Vos prestations et vos atouts</legend>
-                  <div class="field"><label for="services">Quelles sont vos 3 prestations principales&nbsp;? <span class="req">*</span></label><textarea id="services" name="services" rows="3" required placeholder="1. Création de salle de bain&#10;2. Installation pompes à chaleur&#10;3. Dépannage plomberie"></textarea><span class="error-msg" data-error-for="services"></span></div>
-                  <div class="field"><label for="brands">Travaillez-vous avec des marques particulières&nbsp;? <span class="opt">(optionnel)</span></label><input type="text" id="brands" name="brands" placeholder="Ex : Mitsubishi, Atlantic, Grohe, Daikin..." /></div>
-                  <div class="field"><span class="field-label">Vos atouts et certifications <span class="opt">(plusieurs choix possibles)</span></span><div class="checkbox-group"><label class="checkbox"><input type="checkbox" name="atouts" value="decennale" /><span>Garantie décennale</span></label><label class="checkbox"><input type="checkbox" name="atouts" value="rge" /><span>Label RGE / Qualibat</span></label><label class="checkbox"><input type="checkbox" name="atouts" value="devis-gratuit" /><span>Devis gratuit</span></label><label class="checkbox"><input type="checkbox" name="atouts" value="rapide" /><span>Intervention rapide</span></label><label class="checkbox"><input type="checkbox" name="atouts" value="familiale" /><span>Entreprise familiale</span></label><label class="checkbox"><input type="checkbox" name="atouts" value="avis" /><span>Avis clients positifs</span></label></div></div>
+                  <legend class="form-slide-title" id="slide3-title">Comment voulez-vous être perçu&nbsp;?</legend>
+                  <p class="form-slide-help">Choisissez 1 à 3 phrases qui décrivent l'image que vous voulez renvoyer.</p>
+
+                  <div class="field">
+                    <span class="field-label">L'image que vous voulez renvoyer <span class="opt">(1 à 3 choix)</span></span>
+                    <div class="chip-grid" data-chips-max="3" data-name="image">
+                      <button type="button" class="chip-card" data-value="serieux"><span class="chip-icon">🛠️</span> Sérieux &amp; fiable</button>
+                      <button type="button" class="chip-card" data-value="familial"><span class="chip-icon">👨‍👩‍👧</span> Familial &amp; accessible</button>
+                      <button type="button" class="chip-card" data-value="rapide"><span class="chip-icon">⚡</span> Réactif, intervention rapide</button>
+                      <button type="button" class="chip-card" data-value="premium"><span class="chip-icon">💎</span> Haut de gamme</button>
+                      <button type="button" class="chip-card" data-value="ancienne"><span class="chip-icon">🔧</span> Artisan à l'ancienne</button>
+                      <button type="button" class="chip-card" data-value="expert"><span class="chip-icon">🎓</span> Expert technique</button>
+                      <button type="button" class="chip-card" data-value="local"><span class="chip-icon">🏠</span> Local, du coin</button>
+                      <button type="button" class="chip-card" data-value="engage"><span class="chip-icon">🌱</span> Engagé / rénovation énergétique</button>
+                    </div>
+                    <button type="button" class="btn-ghost-soft" data-action="auto-pick" data-target="image">✨ Choisissez pour moi</button>
+                    <input type="hidden" name="image" />
+                  </div>
+
+                  <div class="field">
+                    <label for="imageNote">Une autre chose à dire sur l'ambiance ? <span class="opt">(optionnel, 1 phrase)</span></label>
+                    <input type="text" id="imageNote" name="imageNote" placeholder="Ex : Je veux que ça fasse propre et rassurant" />
+                  </div>
+
                   <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
                 </fieldset>
 
+                <!-- ÉTAPE 4 : PRESTATIONS -->
                 <fieldset class="form-slide" data-slide="4" aria-labelledby="slide4-title">
-                  <legend class="form-slide-title" id="slide4-title">L'identité visuelle de votre site</legend>
-                  <div class="field"><span class="field-label">Avez-vous un logo&nbsp;? <span class="req">*</span></span><div class="radio-group" data-required="logo"><label class="radio"><input type="radio" name="logo" value="oui" required /><span>Oui, je vous l'enverrai par WhatsApp ou email</span></label><label class="radio"><input type="radio" name="logo" value="creer" /><span>Non, créez-en un pour moi</span></label><label class="radio"><input type="radio" name="logo" value="texte" /><span>Non, juste écrivez le nom proprement</span></label></div><span class="error-msg" data-error-for="logo"></span></div>
-                  <div class="field"><span class="field-label">Avez-vous des photos de vos chantiers&nbsp;? <span class="req">*</span></span><div class="radio-group" data-required="photos"><label class="radio"><input type="radio" name="photos" value="oui" required /><span>Oui, je vous les envoie sur WhatsApp</span></label><label class="radio"><input type="radio" name="photos" value="exemples" /><span>Non, utilisez des visuels d'exemple</span></label></div><span class="error-msg" data-error-for="photos"></span></div>
-                  <div class="field"><label for="colors">Avez-vous des couleurs préférées pour le site&nbsp;? <span class="opt">(optionnel)</span></label><input type="text" id="colors" name="colors" placeholder="Ex : bleu marine et orange, comme mon logo" /></div>
-                  <div class="field"><label for="plus">Qu'est-ce qui vous différencie de la concurrence&nbsp;? <span class="opt">(optionnel)</span></label><textarea id="plus" name="plus" rows="3" placeholder="Ex : 20 ans d'expérience, devis sous 24h, intervention week-end..."></textarea></div>
-                  <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="submit" class="btn btn-cta btn-lg">Recevoir ma maquette gratuite <span aria-hidden="true">→</span></button></div>
+                  <legend class="form-slide-title" id="slide4-title">Vos prestations</legend>
+                  <p class="form-slide-help">Cochez ce que vous proposez. Vous pourrez en ajouter à la fin.</p>
+
+                  <div class="field">
+                    <div id="servicesContainer" class="services-container"></div>
+                    <div class="custom-chip-add">
+                      <input type="text" id="customServiceInput" placeholder="Ajouter une prestation perso (ex : pose de spa)" />
+                      <button type="button" class="btn btn-ghost btn-sm" data-action="add-service">+ Ajouter</button>
+                    </div>
+                    <div class="custom-chip-list" id="customServicesList"></div>
+                  </div>
+
+                  <div class="field" id="specialtyField" hidden>
+                    <span class="field-label">Y a-t-il une prestation à mettre particulièrement en avant&nbsp;? <span class="opt">(optionnel — sinon on choisit pour vous)</span></span>
+                    <div class="radio-group radio-group--soft" id="specialtyGroup"></div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Vous intervenez en urgence 24h/24&nbsp;? <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="urgence">
+                      <label class="big-card big-card--sm"><input type="radio" name="urgence" value="oui" required /><span class="big-card-icon" aria-hidden="true">🚨</span><span class="big-card-label">Oui, 24h/24</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="urgence" value="modulable" /><span class="big-card-icon" aria-hidden="true">🔄</span><span class="big-card-label">Modulable<br/>selon les cas</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="urgence" value="non" /><span class="big-card-icon" aria-hidden="true">🕐</span><span class="big-card-label">Non,<br/>horaires bureau</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="urgence"></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Le devis est-il gratuit&nbsp;? <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="devisGratuit">
+                      <label class="big-card big-card--sm"><input type="radio" name="devisGratuit" value="oui" required /><span class="big-card-icon" aria-hidden="true">✅</span><span class="big-card-label">Oui, gratuit</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="devisGratuit" value="cas-par-cas" /><span class="big-card-icon" aria-hidden="true">🤔</span><span class="big-card-label">Au cas par cas</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="devisGratuit" value="non" /><span class="big-card-icon" aria-hidden="true">💶</span><span class="big-card-label">Non, payant</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="devisGratuit"></span>
+                  </div>
+
+                  <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
                 </fieldset>
+
+                <!-- ÉTAPE 5 : ATOUTS & DIFFÉRENCIATION -->
+                <fieldset class="form-slide" data-slide="5" aria-labelledby="slide5-title">
+                  <legend class="form-slide-title" id="slide5-title">Vos atouts &amp; ce qui vous démarque</legend>
+
+                  <div class="field">
+                    <span class="field-label">Vos certifications <span class="opt">(plusieurs choix possibles)</span></span>
+                    <div class="chip-grid chip-grid--soft">
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="decennale" /><span>Garantie décennale</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="rge" /><span>RGE</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="qualibat" /><span>Qualibat</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="qualipac" /><span>QualiPAC</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="qualibois" /><span>Qualibois</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="qualipv" /><span>QualiPV</span></label>
+                      <label class="chip-check"><input type="checkbox" name="certifs" value="assurance" /><span>Assurance pro</span></label>
+                    </div>
+                    <div class="custom-chip-add" style="margin-top:10px;">
+                      <input type="text" id="certifsOther" name="certifsOther" placeholder="Autre certification (ex : Qualifelec, Eco-artisan…)" />
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Ce qui vous démarque de la concurrence <span class="opt">(plusieurs choix)</span></span>
+                    <div class="chip-grid" data-chips-multi="diff" data-name="diff">
+                      <button type="button" class="chip-card" data-value="20ans">20+ ans d'expérience</button>
+                      <button type="button" class="chip-card" data-value="devis-gratuit">Devis gratuit</button>
+                      <button type="button" class="chip-card" data-value="urgence-24">Intervention 24h/24</button>
+                      <button type="button" class="chip-card" data-value="2h">Sous 2h en urgence</button>
+                      <button type="button" class="chip-card" data-value="devis-24h">Devis sous 24h</button>
+                      <button type="button" class="chip-card" data-value="familial">Entreprise familiale</button>
+                      <button type="button" class="chip-card" data-value="pas-soustraitance">Pas de sous-traitance</button>
+                      <button type="button" class="chip-card" data-value="maprimerenov">Aide MaPrimeRénov'</button>
+                      <button type="button" class="chip-card" data-value="weekend">Disponible week-end</button>
+                      <button type="button" class="chip-card" data-value="acompte-mini">Acompte minimum</button>
+                    </div>
+                    <div class="custom-chip-add">
+                      <input type="text" id="customDiffInput" placeholder="Ajouter le mien (ex : 100% satisfait ou refait)" />
+                      <button type="button" class="btn btn-ghost btn-sm" data-action="add-diff">+ Ajouter</button>
+                    </div>
+                    <div class="custom-chip-list" id="customDiffList"></div>
+                    <input type="hidden" name="diff" />
+                  </div>
+
+                  <div class="field">
+                    <label for="brands">Marques que vous posez régulièrement <span class="opt">(optionnel)</span></label>
+                    <input type="text" id="brands" name="brands" placeholder="Ex : Atlantic, Grohe, Mitsubishi…" />
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Avez-vous une note Google&nbsp;? <span class="opt">(optionnel)</span></span>
+                    <div class="google-review-row">
+                      <div class="field-inline">
+                        <label for="googleRating">Note</label>
+                        <input type="number" id="googleRating" name="googleRating" min="0" max="5" step="0.1" placeholder="4,9" />
+                      </div>
+                      <div class="field-inline">
+                        <label for="googleCount">Nombre d'avis</label>
+                        <input type="number" id="googleCount" name="googleCount" min="0" placeholder="127" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Vos clients sont&nbsp;: <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="clientele">
+                      <label class="big-card big-card--sm"><input type="radio" name="clientele" value="particuliers" required /><span class="big-card-icon" aria-hidden="true">🏠</span><span class="big-card-label">Particuliers</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="clientele" value="professionnels" /><span class="big-card-icon" aria-hidden="true">🏢</span><span class="big-card-label">Professionnels</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="clientele" value="les-deux" /><span class="big-card-icon" aria-hidden="true">🤝</span><span class="big-card-label">Les deux</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="clientele"></span>
+                  </div>
+
+                  <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
+                </fieldset>
+
+                <!-- ÉTAPE 6 : IDENTITÉ VISUELLE -->
+                <fieldset class="form-slide" data-slide="6" aria-labelledby="slide6-title">
+                  <legend class="form-slide-title" id="slide6-title">L'identité visuelle</legend>
+
+                  <div class="field">
+                    <span class="field-label">Avez-vous un logo&nbsp;? <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="logo">
+                      <label class="big-card big-card--sm"><input type="radio" name="logo" value="envoi" required /><span class="big-card-icon" aria-hidden="true">📤</span><span class="big-card-label">J'ai un logo</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="logo" value="creer" /><span class="big-card-icon" aria-hidden="true">✨</span><span class="big-card-label">Pas de logo,<br/>créez-en un</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="logo" value="texte" /><span class="big-card-icon" aria-hidden="true">🅰️</span><span class="big-card-label">Juste le nom<br/>écrit proprement</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="logo"></span>
+
+                    <div class="upload-zone" id="logoUploadZone" hidden>
+                      <input type="file" id="logoInput" accept="image/*,application/pdf" />
+                      <label for="logoInput" class="upload-zone-label">
+                        <span class="upload-zone-icon" aria-hidden="true">📎</span>
+                        <strong>Cliquer pour envoyer le logo</strong>
+                        <span>PNG, JPG, PDF — depuis votre téléphone ou ordinateur. <em>Optionnel : vous pouvez aussi nous l'envoyer plus tard par WhatsApp / email.</em></span>
+                      </label>
+                      <div class="upload-preview" id="logoPreview"></div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Avez-vous une charte graphique à respecter&nbsp;? <span class="opt">(franchise, enseigne…)</span></span>
+                    <div class="big-card-grid big-card-grid--2">
+                      <label class="big-card big-card--sm"><input type="radio" name="charte" value="oui" /><span class="big-card-icon" aria-hidden="true">📐</span><span class="big-card-label">Oui, j'ai une charte<br/>(je vous l'enverrai)</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="charte" value="non" /><span class="big-card-icon" aria-hidden="true">🆓</span><span class="big-card-label">Non, vous êtes libres</span></label>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Couleurs du site</span>
+                    <div class="palette-grid" data-name="palette">
+                      <button type="button" class="palette-card" data-value="bleu-pro">
+                        <span class="palette-swatches"><i style="background:#1e3a8a"></i><i style="background:#2d4ea0"></i><i style="background:#fff"></i></span>
+                        <strong>Bleu pro</strong><span>Sérieux, technique</span>
+                      </button>
+                      <button type="button" class="palette-card" data-value="vert-nature">
+                        <span class="palette-swatches"><i style="background:#15803d"></i><i style="background:#84cc16"></i><i style="background:#fff"></i></span>
+                        <strong>Vert nature</strong><span>Écolo, paysage</span>
+                      </button>
+                      <button type="button" class="palette-card" data-value="orange-chaleureux">
+                        <span class="palette-swatches"><i style="background:#c87a2c"></i><i style="background:#f5efe4"></i><i style="background:#0b1d3a"></i></span>
+                        <strong>Orange chaleureux</strong><span>Familial, accessible</span>
+                      </button>
+                      <button type="button" class="palette-card" data-value="noir-premium">
+                        <span class="palette-swatches"><i style="background:#0a0a0a"></i><i style="background:#d4af37"></i><i style="background:#fff"></i></span>
+                        <strong>Noir premium</strong><span>Haut de gamme</span>
+                      </button>
+                    </div>
+                    <button type="button" class="btn-ghost-soft" data-action="auto-pick" data-target="palette">✨ Choisissez pour moi</button>
+                    <input type="hidden" name="palette" />
+
+                    <div class="field" style="margin-top: 14px;">
+                      <label for="customColors">Ou décrivez les couleurs de votre logo <span class="opt">(optionnel)</span></label>
+                      <input type="text" id="customColors" name="customColors" placeholder="Ex : bleu marine et orange comme mon logo" />
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">Photos de vos chantiers <span class="req">*</span></span>
+                    <div class="big-card-grid big-card-grid--3" data-required="photos">
+                      <label class="big-card big-card--sm"><input type="radio" name="photos" value="envoi" required /><span class="big-card-icon" aria-hidden="true">📷</span><span class="big-card-label">J'ai des photos,<br/>je les enverrai par<br/>WhatsApp / email</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="photos" value="exemples" /><span class="big-card-icon" aria-hidden="true">🖼️</span><span class="big-card-label">Utilisez des<br/>visuels d'exemple</span></label>
+                      <label class="big-card big-card--sm"><input type="radio" name="photos" value="auto" /><span class="big-card-icon" aria-hidden="true">✨</span><span class="big-card-label">Choisissez<br/>pour moi</span></label>
+                    </div>
+                    <span class="error-msg" data-error-for="photos"></span>
+                  </div>
+
+                  <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="button" class="btn btn-cta" data-action="next">Suivant <span aria-hidden="true">→</span></button></div>
+                </fieldset>
+
+                <!-- ÉTAPE 7 : CONTACT & FINALISATION -->
+                <fieldset class="form-slide" data-slide="7" aria-labelledby="slide7-title">
+                  <legend class="form-slide-title" id="slide7-title">Pour finir, vos coordonnées</legend>
+
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="email">Votre email <span class="req">*</span></label>
+                      <input type="email" id="email" name="email" required autocomplete="email" placeholder="contact@votre-entreprise.fr" />
+                      <span class="error-msg" data-error-for="email"></span>
+                    </div>
+                    <div class="field">
+                      <label for="phone">Téléphone <span class="req">*</span></label>
+                      <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78" />
+                      <span class="error-msg" data-error-for="phone"></span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="currentSite">Avez-vous déjà un site ou une page Facebook&nbsp;? <span class="opt">(optionnel)</span></label>
+                    <input type="text" id="currentSite" name="currentSite" placeholder="Ex : monsite.fr ou facebook.com/monentreprise" />
+                  </div>
+
+                  <div class="field">
+                    <label for="notes">Quelque chose d'important à savoir&nbsp;? <span class="opt">(optionnel)</span></label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Une demande spécifique, un détail à ne pas oublier, un piège à éviter…"></textarea>
+                  </div>
+
+                  <div class="form-actions"><button type="button" class="btn btn-ghost" data-action="prev"><span aria-hidden="true">←</span> Précédent</button><button type="submit" class="btn btn-cta btn-lg">Envoyer ma demande <span aria-hidden="true">→</span></button></div>
+                </fieldset>
+
               </div>
             </div>
           </form>
@@ -955,6 +1249,6 @@
     </div>
   </div>
 
-  <script src="assets/js/script.js?v=11" defer></script>
+  <script src="assets/js/script.js?v=15" defer></script>
 </body>
 </html>
